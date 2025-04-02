@@ -1,0 +1,75 @@
+.card {
+    width: 250px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .card.light {
+    background-color: #ffffff;
+    color: #212529;
+  }
+  
+  .card.dark {
+    background-color: #2d3436;
+    color: #f8f9fa;
+  }
+  
+  .gameImage {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  .gameContent {
+    padding: 1rem;
+  }
+  
+  .gameTitle {
+    margin: 0 0 0.5rem;
+    font-size: 1.2rem;
+  }
+  
+  .ratingContainer {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  .rating {
+    margin-left: 0.5rem;
+    font-weight: bold;
+  }
+  
+  .totalRatings {
+    margin-left: 0.5rem;
+    font-size: 0.8rem;
+    opacity: 0.7;
+  }
+  
+  .categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin-top: 0.5rem;
+  }
+  
+  .category {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 12px;
+  }
+  
+  .category.light {
+    background-color: #e9ecef;
+  }
+  
+  .category.dark {
+    background-color: #495057;
+  }
+  
