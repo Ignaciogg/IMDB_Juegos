@@ -1,110 +1,10 @@
-// src/pages/Catalog.tsx
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import styles from '../assets/css/Catalog.module.css'; 
 import { games } from '../data/games';
 import GameCard from '../components/GameCard';
 import { GameCategory, Game } from '../types';
 import { FaSearch } from 'react-icons/fa';
 import { useTheme } from '../context/ThemeContext';
-
-const CatalogContainer = styled.div<{theme: 'light' | 'dark'}>`
-  min-height: calc(100vh - 200px);
-  background-color: ${props => props.theme === 'light' ? '#ffffff' : '#121212'};
-  color: ${props => props.theme === 'light' ? '#212529' : '#f8f9fa'};
-  padding: 2rem;
-`;
-
-const Title = styled.h1`
-  margin-bottom: 2rem;
-  text-align: center;
-`;
-
-const FiltersContainer = styled.div<{theme: 'light' | 'dark'}>`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 2rem;
-  padding: 1rem;
-  background-color: ${props => props.theme === 'light' ? '#f8f9fa' : '#2d3436'};
-  border-radius: 8px;
-`;
-
-const FilterGroup = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  flex: 1;
-  min-width: 200px;
-`;
-
-const Label = styled.label`
-  font-weight: bold;
-`;
-
-const Select = styled.select<{theme: 'light' | 'dark'}>`
-  padding: 0.5rem;
-  border-radius: 4px;
-  border: 1px solid ${props => props.theme === 'light' ? '#ced4da' : '#495057'};
-  background-color: ${props => props.theme === 'light' ? '#ffffff' : '#343a40'};
-  color: ${props => props.theme === 'light' ? '#212529' : '#f8f9fa'};
-`;
-
-const RangeContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-`;
-
-const RangeValue = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
-const SearchContainer = styled.div`
-  position: relative;
-  width: 100%;
-`;
-
-const SearchInput = styled.input<{theme: 'light' | 'dark'}>`
-  width: 100%;
-  padding: 0.5rem 2.5rem 0.5rem 0.5rem;
-  border-radius: 4px;
-  border: 1px solid ${props => props.theme === 'light' ? '#ced4da' : '#495057'};
-  background-color: ${props => props.theme === 'light' ? '#ffffff' : '#343a40'};
-  color: ${props => props.theme === 'light' ? '#212529' : '#f8f9fa'};
-`;
-
-const SearchIcon = styled.div`
-  position: absolute;
-  right: 0.5rem;
-  top: 50%;
-  transform: translateY(-50%);
-`;
-
-const GamesGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 2rem;
-  margin-bottom: 2rem;
-`;
-
-const Pagination = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-top: 2rem;
-`;
-
-const PageButton = styled.button<{active?: boolean, theme: 'light' | 'dark'}>`
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  border: 1px solid ${props => props.theme === 'light' ? '#ced4da' : '#495057'};
-  background-color: ${props => props.active 
-    ? (props.theme === 'light' ? '#007bff' : '#0d6efd') 
-    : (props.theme === 'light' ? '#ffffff' : '#343a40')};
-  color: ${props => props.active ? '#ffffff' : (props.theme === 'light' ? '#212529' : '#f8f9fa')};
-  cursor: pointer;
-`;
 
 const AllCategories: GameCategory[] = [
   'Estrategia', 'Familiar', 'Party', 'Eurogame', 'Americano',
@@ -158,27 +58,27 @@ const Catalog: React.FC = () => {
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   return (
-    <CatalogContainer theme={theme}>
-      <Title>Catálogo de Juegos</Title>
+    <div className={`${styles.catalogContainer} ${styles[theme]}`}>
+      <h1 className={styles.title}>Catálogo de Juegos</h1>
       
-      <FiltersContainer theme={theme}>
-        <FilterGroup>
-          <Label>Categoría</Label>
-          <Select 
+      <div className={`${styles.filtersContainer} ${styles[theme]}`}>
+        <div className={styles.filterGroup}>
+          <label className={styles.label}>Categoría</label>
+          <select 
             value={selectedCategory} 
             onChange={(e) => setSelectedCategory(e.target.value)}
-            theme={theme}
+            className={`${styles.select} ${styles[theme]}`}
           >
             <option value="">Todas las categorías</option>
             {AllCategories.map(category => (
               <option key={category} value={category}>{category}</option>
             ))}
-          </Select>
-        </FilterGroup>
+          </select>
+        </div>
         
-        <FilterGroup>
-          <Label>Número de jugadores: {players}</Label>
-          <RangeContainer>
+        <div className={styles.filterGroup}>
+          <label className={styles.label}>Número de jugadores: {players}</label>
+          <div className={styles.rangeContainer}>
             <input
               type="range"
               min="1"
@@ -186,49 +86,48 @@ const Catalog: React.FC = () => {
               value={players}
               onChange={(e) => setPlayers(parseInt(e.target.value))}
             />
-            <RangeValue>
+            <div className={styles.rangeValue}>
               <span>1</span>
               <span>10</span>
-            </RangeValue>
-          </RangeContainer>
-        </FilterGroup>
+            </div>
+          </div>
+        </div>
         
-        <FilterGroup>
-          <Label>Buscar</Label>
-          <SearchContainer>
-            <SearchInput
+        <div className={styles.filterGroup}>
+          <label className={styles.label}>Buscar</label>
+          <div className={styles.searchContainer}>
+            <input
               type="text"
               placeholder="Nombre del juego..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              theme={theme}
+              className={`${styles.searchInput} ${styles[theme]}`}
             />
-            <SearchIcon>
+            <div className={styles.searchIcon}>
               <FaSearch />
-            </SearchIcon>
-          </SearchContainer>
-        </FilterGroup>
-      </FiltersContainer>
+            </div>
+          </div>
+        </div>
+      </div>
       
-      <GamesGrid>
+      <div className={styles.gamesGrid}>
         {currentGames.map(game => (
           <GameCard key={game.id} game={game} />
         ))}
-      </GamesGrid>
+      </div>
       
-      <Pagination>
+      <div className={styles.pagination}>
         {Array.from({ length: totalPages }, (_, i) => (
-          <PageButton
+          <button
             key={i + 1}
             onClick={() => paginate(i + 1)}
-            active={currentPage === i + 1}
-            theme={theme}
+            className={`${styles.pageButton} ${currentPage === i + 1 ? styles.active : ''} ${styles[theme]}`}
           >
             {i + 1}
-          </PageButton>
+          </button>
         ))}
-      </Pagination>
-    </CatalogContainer>
+      </div>
+    </div>
   );
 };
 
