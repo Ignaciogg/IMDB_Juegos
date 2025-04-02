@@ -7,6 +7,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import Catalog from './pages/Catalog';
+import GamePage from './pages/Game'; // Import the GamePage component
 
 // Definir el tema para styled-components
 type StyledTheme = {
@@ -49,6 +50,7 @@ const AppContent: React.FC = () => {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/catalog" element={<Catalog />} />
+                <Route path="/game/:id" element={<GamePage />} /> {/* Add route for game details */}
                 <Route path="/rankings" element={<div>Página de Rankings (Por implementar)</div>} />
               </Routes>
             </Content>

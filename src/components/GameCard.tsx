@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { getDownloadURL, ref } from "firebase/storage";
-import { storage } from "../firebase"; // Importa Firebase Storage
+import { storage } from "../firebase"; // Import Firebase Storage
 import { FaStar } from "react-icons/fa";
 import { Game } from "../types";
 import { useTheme } from "../context/ThemeContext";
+import { useNavigate } from 'react-router-dom';  // Import the useNavigate hook
 import styles from "../assets/css/GameCard.module.css";
 
 interface GameCardProps {
@@ -13,14 +14,15 @@ interface GameCardProps {
 const GameCard: React.FC<GameCardProps> = ({ game }) => {
   const { theme } = useTheme();
   const [imageUrl, setImageUrl] = useState("");
+  const navigate = useNavigate();  
 
   useEffect(() => {
     const fetchImage = async () => {
-      if (!game.image) return; 
+      if (!game.image) return;
 
       try {
-        const imageRef = ref(storage, `games/${game.image}`); //puede fallar depende de los permisos de firebase.
-        const url = await getDownloadURL(imageRef); 
+        const imageRef = ref(storage, `games/${game.image}`); //permisos firebase va a fallar
+        const url = await getDownloadURL(imageRef);
         setImageUrl(url);
       } catch (error) {
         console.error("Error fetching image:", error);
@@ -30,8 +32,12 @@ const GameCard: React.FC<GameCardProps> = ({ game }) => {
     fetchImage();
   }, [game.image]);
 
+  const handleClick = () => {
+    navigate(`/game/${game.id}`);  
+  };
+
   return (
-    <div className={`${styles.card} ${styles[theme]}`}>
+    <div className={`${styles.card} ${styles[theme]}`} onClick={handleClick}>
       <img className={styles.gameImage} src={imageUrl} alt={game.name} />
       <div className={styles.gameContent}>
         <h3 className={styles.gameTitle}>{game.name}</h3>
