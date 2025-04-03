@@ -1,44 +1,19 @@
-import { Game } from '../types'; 
-import catanImage from "../assets/temp-images/catan.png"; //temporal hasta utilizar bbdd
+import { fetchBGGGame } from "./api";
 
-export const games: Game[] = [
-  {
-    id: 1,
-    name: 'Catan',
-    //image: 'catan.png', // nombre del archivo en firebase. Actualizar reglas en testing
-    image: catanImage,
-    rating: 4.7,
-    totalRatings: 3254,
-    categories: ['Estrategia', 'Familiar'],
-    minPlayers: 3,
-    maxPlayers: 4,
-    description: 'Un juego clásico de construcción y comercio'
-  },
-  {
-    id: 2,
-    name: 'Pandemic',
-    image: 'https://via.placeholder.com/300x200?text=Pandemic',
-    rating: 4.9,
-    totalRatings: 2856,
-    categories: ['Cooperativo', 'Estrategia'],
-    minPlayers: 2,
-    maxPlayers: 4,
-    description: 'Salva al mundo de enfermedades mortales'
-  },
- 
-];
+export const games: any[] = [];
 
-// Agregar más juegos dinámicamente
-for (let i = 3; i <= 25; i++) {
-  games.push({
-    id: i,
-    name: `Juego ${i}`,
-    image: `https://via.placeholder.com/300x200?text=Juego${i}`,
-    rating: Math.round((3 + Math.random() * 2) * 10) / 10,
-    totalRatings: Math.floor(Math.random() * 3000) + 500,
-    categories: ['Familiar', 'Cartas'],
-    minPlayers: Math.floor(Math.random() * 2) + 1,
-    maxPlayers: Math.floor(Math.random() * 6) + 2,
-    description: `Descripción del juego ${i}`
-  });
+const gameIds = [13, 174430, 161936,12,25,122,23]; // Example BGG game IDs
+
+async function loadGames() {
+  try {
+    for (const id of gameIds) {
+      const gameData = await fetchBGGGame(id);
+      games.push(gameData);
+    }
+    console.log("Games loaded:", games);
+  } catch (error) {
+    console.error("Error loading games:", error);
+  }
 }
+
+loadGames();

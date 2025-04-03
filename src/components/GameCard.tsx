@@ -1,48 +1,55 @@
 import React, { useEffect, useState } from "react";
-import { getDownloadURL, ref } from "firebase/storage";
-import { storage } from "../firebase"; // Import Firebase Storage
+import { useNavigate } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
-import { Game } from "../types";
 import { useTheme } from "../context/ThemeContext";
-import { useNavigate } from 'react-router-dom';  // Import the useNavigate hook
+import { fetchBGGGame } from "../data/api";
 import styles from "../assets/css/GameCard.module.css";
 
-interface GameCardProps {
-  game: Game;
+// Define a Game interface for better type safety
+interface Game {
+  id: number;
+  name: string;
+  image: string;
+  rating: number;
+  totalRatings: number;
+  categories: string[];
 }
 
-const GameCard: React.FC<GameCardProps> = ({ game }) => {
+interface GameCardProps {
+  gameId: number;
+}
+
+const GameCard: React.FC<GameCardProps> = ({ gameId }) => {
   const { theme } = useTheme();
-  const imageUrl = game.image;
+  const navigate = useNavigate();
+  const [game, setGame] = useState<Game | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null); // New error state
 
-  const navigate = useNavigate();  
- 
-
-  //Para coger la imagen de firebase.storage. temporalmente usaremos imagenes locales para estilar.
-//const [imageUrl, setImageUrl] = useState(""); 
- /* useEffect(() => {
-    const fetchImage = async () => {
-      if (!game.image) return;
-
+  useEffect(() => {
+    async function loadGame() {
       try {
-        const imageRef = ref(storage, `games/${game.image}`); //permisos firebase va a fallar
-        const url = await getDownloadURL(imageRef);
-        setImageUrl(url);
+        setLoading(true);
+        const data = await fetchBGGGame(gameId);
+        setGame(data);
       } catch (error) {
-        console.error("Error fetching image:", error);
+        console.error("Error fetching game:", error);
+        setError("Error loading game data."); // Set error message
+      } finally {
+        setLoading(false);
       }
-    };
+    }
+    loadGame();
+  }, [gameId]);
 
-    fetchImage();
-  }, [game.image]); */
-
-  const handleClick = () => {
-    navigate(`/game/${game.id}`);  
-  };
+  // Handle loading, error, and displaying the game
+  if (loading) return <div>Loading game...</div>;
+  if (error) return <div>{error}</div>;
+  if (!game) return <div>Game not found.</div>;
 
   return (
-    <div className={`${styles.card} ${styles[theme]}`} onClick={handleClick}>
-      <img className={styles.gameImage} src={imageUrl} alt={game.name} />
+    <div className={`${styles.card} ${styles[theme]}`} onClick={() => navigate(`/game/${game.id}`)}>
+      <img className={styles.gameImage} src={game.image} alt={game.name} />
       <div className={styles.gameContent}>
         <h3 className={styles.gameTitle}>{game.name}</h3>
         <div className={styles.ratingContainer}>
@@ -51,11 +58,15 @@ const GameCard: React.FC<GameCardProps> = ({ game }) => {
           <span className={styles.totalRatings}>({game.totalRatings})</span>
         </div>
         <div className={styles.categories}>
-          {game.categories.map((category, index) => (
-            <span key={index} className={`${styles.category} ${styles[theme]}`}>
-              {category}
-            </span>
-          ))}
+          {game.categories.length > 0 ? (
+            game.categories.map((category, index) => (
+              <span key={index} className={`${styles.category} ${styles[theme]}`}>
+                {category}
+              </span>
+            ))
+          ) : (
+            <span className={`${styles.category} ${styles[theme]}`}>No categories available</span>
+          )}
         </div>
       </div>
     </div>

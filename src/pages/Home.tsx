@@ -6,10 +6,8 @@ import { useTheme } from '../context/ThemeContext';
 
 const Home: React.FC = () => {
   const { theme } = useTheme();
-  
-  // Ordenar juegos por valoración para mostrar los populares
-  const popularGames = [...games].sort((a, b) => b.rating - a.rating);
-
+  const gameIds = [13, 174430, 161936,12,25,122,23] // ids de prueba
+ 
   return (
     <div className={`${styles.homeContainer} ${styles[theme]}`}>
       <section className={`${styles.heroSection} ${styles[theme]}`}>
@@ -17,7 +15,7 @@ const Home: React.FC = () => {
         <p>Tu plataforma para encontrar, valorar y compartir juegos de mesa</p>
       </section>
       
-      <GameSlider title="Juegos populares" games={popularGames} />
+      <GameSlider title="Juegos populares" gameIds={gameIds} />
     </div>
   );
 };

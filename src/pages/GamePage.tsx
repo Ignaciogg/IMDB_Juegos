@@ -1,21 +1,45 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { Game } from '../types';
-import { games } from '../data/games'; 
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { fetchBGGGame } from "../data/api";
 import styles from "../assets/css/GamePage.module.css";
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from "../context/ThemeContext";
 
 const GamePage: React.FC = () => {
-  const { theme } = useTheme();  
-  const { id } = useParams(); 
-  const [game, setGame] = useState<Game | null>(null);
+  const { theme } = useTheme();
+  const { id } = useParams();
+  const [game, setGame] = useState<any | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const foundGame = games.find(game => game.id.toString() === id);
-    setGame(foundGame || null); 
+    async function loadGame() {
+      if (!id) return;
+
+  
+      console.log("Fetching game with ID:", id);
+
+      try {
+        const gameData = await fetchBGGGame(parseInt(id));
+
+    
+        console.log("Fetched game data:", gameData);
+
+        if (!gameData) {
+          console.error("No game data found for ID:", id);
+          return;
+        }
+
+        setGame(gameData);
+      } catch (error) {
+        console.error("Error fetching game:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadGame();
   }, [id]);
 
-  if (!game) return <div className={`${styles.gameContainer} ${styles[theme]}`}>Game not found!</div>; 
+  if (loading) return <div className={`${styles.gameContainer} ${styles[theme]}`}>Loading...</div>;
+  if (!game) return <div className={`${styles.gameContainer} ${styles[theme]}`}>Game not found!</div>;
 
   return (
     <div className={`${styles.gameContainer} ${styles[theme]}`}>
@@ -25,13 +49,6 @@ const GamePage: React.FC = () => {
         <p>{game.description}</p>
         <p className={styles.rating}>⭐ {game.rating}</p>
         <p>Players: {game.minPlayers} - {game.maxPlayers}</p>
-        <div className={styles.categories}>
-          {game.categories.map((category, index) => (
-            <span key={index} className={`${styles.category} ${styles[theme]}`}>
-              {category}
-            </span>
-          ))}
-        </div>
       </div>
     </div>
   );
