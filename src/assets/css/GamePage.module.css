@@ -1,0 +1,117 @@
+
+.gameContainer {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.gameTitle {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.gameImage {
+  display: block;
+  max-width: 80%;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.gameDetails {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-top: 20px;
+}
+
+.gameDetails p {
+  margin: 10px 0;
+}
+
+.rating {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.categories {
+  margin-top: 15px;
+}
+
+.category {
+  display: inline-block;
+  font-size: 1rem;
+  padding: 5px 10px;
+  border-radius: 8px;
+  margin: 5px;
+}
+.category.light:hover,
+.category.dark:hover {
+  background-color: #3368a1;
+  color: white;
+  cursor: pointer;
+}
+
+
+.gameContainer.light  {
+  background-color: #fff;
+}
+
+.gameTitle.light  {
+  color: #333;
+}
+.gameDetails.light  {
+  color: #444;
+}
+
+.rating.light  {
+  color: #ff9800;
+}
+
+.category.light  {
+  background-color: #eee;
+  color: #333;
+}
+
+
+
+.gameContainer.dark  {
+  background-color: #495057;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.gameTitle.dark  {
+  color: #fff;
+}
+
+.gameDetails.dark  {
+  color: #555252;
+}
+
+.rating.dark  {
+  color: #ff9800;
+}
+
+.category.dark  {
+  background-color: #555;
+  color: #fff;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .gameContainer {
+    padding: 15px;
+  }
+
+  .gameTitle {
+    font-size: 2rem;
+  }
+
+  .gameDetails {
+    font-size: 1rem;
+  }
+}

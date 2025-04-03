@@ -13,10 +13,14 @@ interface GameCardProps {
 
 const GameCard: React.FC<GameCardProps> = ({ game }) => {
   const { theme } = useTheme();
-  const [imageUrl, setImageUrl] = useState("");
-  const navigate = useNavigate();  
+  const imageUrl = game.image;
 
-  useEffect(() => {
+  const navigate = useNavigate();  
+ 
+
+  //Para coger la imagen de firebase.storage. temporalmente usaremos imagenes locales para estilar.
+//const [imageUrl, setImageUrl] = useState(""); 
+ /* useEffect(() => {
     const fetchImage = async () => {
       if (!game.image) return;
 
@@ -30,7 +34,7 @@ const GameCard: React.FC<GameCardProps> = ({ game }) => {
     };
 
     fetchImage();
-  }, [game.image]);
+  }, [game.image]); */
 
   const handleClick = () => {
     navigate(`/game/${game.id}`);  

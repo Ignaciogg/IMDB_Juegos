@@ -1,10 +1,12 @@
 import { Game } from '../types'; 
+import catanImage from "../assets/temp-images/catan.png"; //temporal hasta utilizar bbdd
 
 export const games: Game[] = [
   {
     id: 1,
     name: 'Catan',
-    image: 'catan.png', // nombre del archivo en firebase. Actualizar reglas en testing
+    //image: 'catan.png', // nombre del archivo en firebase. Actualizar reglas en testing
+    image: catanImage,
     rating: 4.7,
     totalRatings: 3254,
     categories: ['Estrategia', 'Familiar'],

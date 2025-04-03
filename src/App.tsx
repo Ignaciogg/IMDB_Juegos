@@ -7,7 +7,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import Catalog from './pages/Catalog';
-import GamePage from './pages/Game'; // Import the GamePage component
+import GamePage from './pages/GamePage'; // Import the GamePage component
 
 // Definir el tema para styled-components
 type StyledTheme = {
