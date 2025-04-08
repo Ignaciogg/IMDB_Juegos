@@ -87,12 +87,12 @@
 }
 
 .category.light {
-  background-color: #e6b97a; /* Slightly darker light wood */
+  background-color: #e6b97a; 
   color: #4a2c0b;
 }
 
 .category.dark {
-  background-color: #2a1d12; /* Slightly darker dark wood */
+  background-color: #2a1d12; 
   color: #e6d5b8;
 }
 

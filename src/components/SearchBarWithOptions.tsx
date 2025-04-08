@@ -18,7 +18,7 @@ const SearchBarWithOptions: React.FC<SearchBarWithOptionsProps> = ({
   placeholder,
   onOptionSelect,
 }) => {
-  const { theme } = useTheme(); // Access the current theme
+  const { theme } = useTheme();
   const [inputValue, setInputValue] = useState(searchQuery);
   const [isFocused, setIsFocused] = useState(false);
 

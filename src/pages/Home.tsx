@@ -35,7 +35,7 @@ const Home: React.FC = () => {
     };
 
     fetchGames();
-  }, []); // Empty dependency array to run once on mount
+  }, []);
 
   if (loading) {
     return <div className={`${styles.homeContainer} ${styles[theme]}`}>Loading games...</div>;

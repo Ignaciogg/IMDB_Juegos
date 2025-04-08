@@ -7,12 +7,12 @@
 
 .footer.light {
   background: url(../images/dark-wood.png) repeat;
-  background-color: #f58f00b9; /* Slightly darker light wood */
+  background-color: #f58f00b9;
   color: #4a2c0b;
 }
 
 .footer.dark {
   background: url(../images/dark-wood.png) repeat;
-  background-color: #2a1d12; /* Slightly darker dark wood */
+  background-color: #2a1d12;
   color: #e6d5b8;
 }

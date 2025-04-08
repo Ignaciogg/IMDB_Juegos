@@ -14,13 +14,13 @@
 .filterBarContainer.light {
   background: url(../images/dark-wood.png) repeat;
   background-color: #f5d5a5;
-  border: 2px solid #8b5a2b; /* Medium brown border */
+  border: 2px solid #8b5a2b;
 }
 
 .filterBarContainer.dark {
   background: url(../images/dark-wood.png) repeat;
-  background-color: #3a2a1b; /* Dark wood */
-  border: 2px solid #5c4033; /* Darker brown border */
+  background-color: #3a2a1b; 
+  border: 2px solid #5c4033; 
 }
 
 
@@ -31,11 +31,11 @@
 }
 
 .filterLabel.light {
-  color: #4a2c0b; /* Dark brown text */
+  color: #4a2c0b; 
 }
 
 .filterLabel.dark {
-  color: #e6d5b8; /* Light cream text */
+  color: #e6d5b8; 
 }
 
 .rangeContainer {
@@ -57,12 +57,12 @@ input[type="range"] {
 
 input[type="range"].light {
   background-color: burlywood;
-  background: linear-gradient(to right, #8b5a2b, #d4a017); /* Brown to gold gradient */
+  background: linear-gradient(to right, #8b5a2b, #d4a017); 
 }
 
 input[type="range"].dark {
   background-color: rgb(167, 138, 100);
-  background: linear-gradient(to right, #5c4033, #a68a64); /* Dark brown to muted gold */
+  background: linear-gradient(to right, #5c4033, #a68a64); 
 }
 
 input[type="range"]::-webkit-slider-thumb {

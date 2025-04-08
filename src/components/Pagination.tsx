@@ -1,13 +1,12 @@
 import React from "react";
 import styles from "../assets/css/Pagination.module.css";
 
-// Define the props interface to include the theme and optional buttonClass
 interface PaginationProps {
   totalPages: number;
   currentPage: number;
   paginate: (page: number) => void;
   theme: "light" | "dark";
-  buttonClass?: string; // Add optional buttonClass prop
+  buttonClass?: string; 
 }
 
 const Pagination: React.FC<PaginationProps> = ({
@@ -15,7 +14,7 @@ const Pagination: React.FC<PaginationProps> = ({
   currentPage,
   paginate,
   theme,
-  buttonClass = "", // Default to empty string if not provided
+  buttonClass = "", 
 }) => (
   <div className={`${styles.pagination} ${theme}`}>
     {Array.from({ length: totalPages }, (_, i) => (
@@ -24,7 +23,7 @@ const Pagination: React.FC<PaginationProps> = ({
         onClick={() => paginate(i + 1)}
         className={`${styles.pageButton} ${theme} ${
           currentPage === i + 1 ? styles.active : ""
-        } ${buttonClass}`} // Apply the custom buttonClass
+        } ${buttonClass}`} 
       >
         {i + 1}
       </button>

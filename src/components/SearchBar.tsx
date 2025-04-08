@@ -10,7 +10,7 @@ interface SearchBarProps {
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({ searchQuery, setSearchQuery, placeholder }) => {
-  const { theme } = useTheme(); // Access the current theme
+  const { theme } = useTheme(); 
 
   return (
     <div className={`${styles.searchContainer} ${theme}`}>
