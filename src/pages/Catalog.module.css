@@ -1,0 +1,166 @@
+/* src/components/Catalog.css */
+.title {
+  text-align: center;
+  font-size: 3.5rem;
+  font-family: 'Fredoka One', cursive;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  position: relative;
+}
+
+.title.light {
+  color: #dba047;
+  background: url(../assets/images/dark-wood.png) repeat;
+  background-color: #f5d5a5;
+  
+}
+
+.title.dark {
+  color: #a68a64;
+  background: url(../assets/images/dark-wood.png) repeat;
+  background-color: #3a2a1b;
+}
+
+
+.searchContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: flex-start;
+  background-color: black;
+}
+.searchContainer.autocompleteContainer{
+  background-color: black;
+}
+.filtersContainer {
+  background: url(../assets/images/dark-wood.png) repeat;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.filtersContainer.light {
+  background: url(../assets/images/dark-wood.png) repeat;
+  background-color: #f5d5a5;
+ 
+}
+
+.filtersContainer.dark {
+  background: url(../assets/images/dark-wood.png) repeat;
+  background-color: #3a2a1b;
+  
+}
+.filtersContainer.searchContainer.autocompleteContainer{
+  background-color: black
+}
+
+.gamesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 1.5rem;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.gamesGrid.light {
+  background: url(../assets/images/dark-wood.png) repeat;
+  background-color: #f5d5a5;
+  
+}
+
+.gamesGrid.dark {
+  background: url(../assets/images/dark-wood.png) repeat;
+  background-color: #3a2a1b;
+  
+}
+
+
+.pagination {
+  display: flex;
+  justify-content: center;  
+}
+
+.pagination.light {
+  background: url(../assets/images/dark-wood.png) repeat;
+  background-color: #f5d5a5;
+  
+}
+
+.pagination.dark {
+  background: url(../assets/images/dark-wood.png) repeat;
+  background-color: #3a2a1b;
+}
+
+.customPageButton {
+  padding: 0.8rem 1.4rem; /* Slightly larger padding for a more tactile feel */
+  border-radius: 8px; /* More rounded corners */
+  cursor: pointer;
+  font-family: 'Fredoka One', cursive; /* Playful font to match the board game theme */
+  font-weight: 400;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.customPageButton.light {
+  border: 3px solid #8b5a2b; /* Thicker medium brown border */
+  background: rgba(245, 213, 165, 0.9); /* Slightly more opaque light wood */
+  color: #4a2c0b; /* Dark brown text */
+}
+
+.customPageButton.dark {
+  border: 3px solid #5c4033; /* Thicker darker brown border */
+  background: rgba(58, 42, 27, 0.9); /* Slightly more opaque dark wood */
+  color: #e6d5b8; /* Light cream text */
+}
+
+.customPageButton.light:hover {
+  background: #d4a017; /* Gold on hover */
+  color: #ffffff;
+  border-color: #d4a017;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.customPageButton.dark:hover {
+  background: #a68a64; /* Muted gold on hover */
+  color: #ffffff;
+  border-color: #a68a64;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.customPageButton.light.active {
+  background: #d4a017; /* Gold for active state */
+  color: #ffffff; /* White text for better contrast */
+  border-color: #d4a017;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.customPageButton.dark.active {
+  background: #a68a64; /* Muted gold for active state */
+  color: #ffffff; /* White text for better contrast */
+  border-color: #a68a64;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.customPageButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.customPageButton:hover::before {
+  left: 100%;
+}

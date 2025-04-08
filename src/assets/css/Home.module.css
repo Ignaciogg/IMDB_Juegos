@@ -1,29 +1,36 @@
+/* Home.module.css */
 .homeContainer {
-    min-height: calc(100vh - 200px);
-    padding: 2rem 0;
-  }
   
-  .homeContainer.light {
-    background-color: #ffffff;
-    color: #212529;
-  }
+  min-height: calc(100vh - 200px);
+  padding: 2rem 0;
+}
+
+.homeContainer.light {
   
-  .homeContainer.dark {
-    background-color: #121212;
-    color: #f8f9fa;
-  }
-  
-  .heroSection {
-    text-align: center;
-    padding: 4rem 2rem;
-    margin-bottom: 2rem;
-  }
-  
-  .heroSection.light {
-    background-color: #e9ecef;
-  }
-  
-  .heroSection.dark {
-    background-color: #2d3436;
-  }
-  
+  background: url(../images/dark-wood.png) repeat;
+  background-color: #f5d5a5;
+  color: #1d1d1d;
+}
+
+.homeContainer.dark {
+  background: url(../images/dark-wood.png) repeat;
+  background-color: #3a2a1b;
+  color: #e6d5b8;
+}
+
+.heroSection {
+  text-align: center;
+  padding: 4rem 2rem;
+  margin-bottom: 2rem;
+  border-radius: 12px;
+}
+
+.heroSection.light {
+  background: url(../images/dark-wood.png) repeat;
+  background-color: #f5d5a5c2;
+}
+
+.heroSection.dark {
+  background: url(../images/dark-wood.png) repeat;
+  background-color: #2a1d12; 
+}

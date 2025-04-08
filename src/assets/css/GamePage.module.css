@@ -1,11 +1,22 @@
-
+/* GamePage.module.css */
 .gameContainer {
   max-width: 900px;
   margin: 40px auto;
   padding: 20px;
   border-radius: 12px;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.gameContainer.light {
+  background: url(../images/dark-wood.png) repeat;
+  background-color: #f5d5a5;
+}
+
+.gameContainer.dark {
+  background: url(../images/dark-wood.png) repeat;
+  background-color: #3a2a1b;
 }
 
 .gameTitle {
@@ -14,19 +25,35 @@
   margin-bottom: 15px;
 }
 
+.gameTitle.light {
+  color: #4a2c0b;
+}
+
+.gameTitle.dark {
+  color: #e6d5b8;
+}
+
 .gameImage {
   display: block;
   max-width: 80%;
   height: auto;
   margin: 0 auto;
   border-radius: 10px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .gameDetails {
   font-size: 1.2rem;
   line-height: 1.6;
   margin-top: 20px;
+}
+
+.gameDetails.light {
+  color: #4a2c0b;
+}
+
+.gameDetails.dark {
+  color: #e6d5b8;
 }
 
 .gameDetails p {
@@ -36,6 +63,14 @@
 .rating {
   font-size: 1.3rem;
   font-weight: bold;
+}
+
+.rating.light {
+  color: #d4a017;
+}
+
+.rating.dark {
+  color: #a68a64;
 }
 
 .categories {
@@ -48,60 +83,29 @@
   padding: 5px 10px;
   border-radius: 8px;
   margin: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
-.category.light:hover,
+
+.category.light {
+  background-color: #e6b97a; /* Slightly darker light wood */
+  color: #4a2c0b;
+}
+
+.category.dark {
+  background-color: #2a1d12; /* Slightly darker dark wood */
+  color: #e6d5b8;
+}
+
+.category.light:hover {
+  background-color: #d4a017;
+  color: #ffffff;
+}
+
 .category.dark:hover {
-  background-color: #3368a1;
-  color: white;
-  cursor: pointer;
+  background-color: #a68a64;
+  color: #ffffff;
 }
 
-
-.gameContainer.light  {
-  background-color: #fff;
-}
-
-.gameTitle.light  {
-  color: #333;
-}
-.gameDetails.light  {
-  color: #444;
-}
-
-.rating.light  {
-  color: #ff9800;
-}
-
-.category.light  {
-  background-color: #eee;
-  color: #333;
-}
-
-
-
-.gameContainer.dark  {
-  background-color: #495057;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
-}
-
-.gameTitle.dark  {
-  color: #fff;
-}
-
-.gameDetails.dark  {
-  color: #555252;
-}
-
-.rating.dark  {
-  color: #ff9800;
-}
-
-.category.dark  {
-  background-color: #555;
-  color: #fff;
-}
-
-/* Estilos responsivos */
 @media (max-width: 768px) {
   .gameContainer {
     padding: 15px;

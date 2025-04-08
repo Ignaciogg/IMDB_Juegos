@@ -1,26 +1,12 @@
-
-
-export type GameCategory = 
-  | 'Estrategia' 
-  | 'Familiar' 
-  | 'Party' 
-  | 'Eurogame' 
-  | 'Americano'
-  | 'Cooperativo'
-  | 'Competitivo'
-  | 'Cartas'
-  | 'Rol';
-
-
-
 export interface Game {
-  id: number;
+  id: string; // Firestore document ID
   name: string;
-  image: string;
-  rating: number;
-  totalRatings: number;
-  categories: GameCategory[];
-  minPlayers: number;
-  maxPlayers: number;
+  year: number;
+  min_players: number;
+  max_players: number;
   description: string;
+  categories: string[];
+  average_rating: number; // From Firestore
+  totalRatings: number; // From Firestore
+  image: string | null; // Image URL or null
 }

@@ -1,57 +1,88 @@
+/* Header.module.css */
 .headerContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .headerContainer.light {
-    background-color: #f8f9fa;
-    color: #212529;
-  }
-  
-  .headerContainer.dark {
-    background-color: #343a40;
-    color: #f8f9fa;
-  }
-  
-  .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-  
-  .nav {
-    display: flex;
-    gap: 1.5rem;
-  }
-  
-  .navLink {
-    text-decoration: none;
-  }
-  
-  .navLink.light {
-    color: #212529;
-  }
-  
-  .navLink.dark {
-    color: #f8f9fa;
-  }
-  
-  .navLink:hover {
-    text-decoration: underline;
-  }
-  
-  .controls {
-    display: flex;
-    gap: 1rem;
-  }
-  
-  .iconButton {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 1.2rem;
-    color: inherit;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.headerContainer.light {
+  background: url(../images/dark-wood.png) repeat;
+  background-color: #f5d5a5;
+  color: #4a2c0b;
+}
+
+.headerContainer.dark {
+  background: url(../images/dark-wood.png) repeat;
+  background-color: #3a2a1b;
+  color: #e6d5b8;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.logo.light {
+  color: #4a2c0b;
+}
+
+.logo.dark {
+  color: #e6d5b8;
+}
+
+.nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.navLink {
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navLink.light {
+  color: #4a2c0b;
+}
+
+.navLink.dark {
+  color: #e6d5b8;
+}
+
+.navLink.light:hover {
+  color: #d4a017;
+}
+
+.navLink.dark:hover {
+  color: #a68a64;
+}
+
+.controls {
+  display: flex;
+  gap: 1rem;
+}
+
+.iconButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.iconButton.light {
+  color: #4a2c0b;
+}
+
+.iconButton.dark {
+  color: #e6d5b8;
+}
+
+.iconButton.light:hover {
+  color: #d4a017;
+}
+
+.iconButton.dark:hover {
+  color: #a68a64;
+}
