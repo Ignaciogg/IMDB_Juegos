@@ -1,4 +1,11 @@
 /* src/components/Catalog.css */
+
+
+.catalogContainer{
+  margin-bottom: 100px;
+  border-bottom: rebeccapurple;
+
+}
 .title {
   text-align: center;
   font-size: 3.5rem;
@@ -58,6 +65,7 @@
   padding: 1.5rem;
   position: relative;
   transition: transform 0.3s ease;
+  min-height: fit-content;
 }
 
 .gamesGrid.light {

@@ -5,6 +5,7 @@
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
+  
 }
 
 .card.light {
@@ -49,6 +50,9 @@
   margin: 0 0 0.5rem;
   font-size: 1.2rem;
   font-family: 'Fredoka One', cursive;
+  white-space: nowrap;  
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .gameTitle.light {
@@ -97,6 +101,8 @@
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-top: 0.5rem;
+  max-height: 25px; /* Limit height to 1 lines of categories */
+  overflow: hidden; /* Hide overflowing categories */
 }
 
 .category {
@@ -105,6 +111,10 @@
   border-radius: 8px;
   color: white;
   transition: background-color 0.3s ease;
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
+  max-width: 100px;
 }
 
 .category.light {

@@ -75,6 +75,12 @@
   color: #4a2c0b;
 }
 
+.headerContainer.dark{
+  background: rgb(56, 43, 43);
+}
+.headerContainer.light{
+background: #f5d5a5;
+}
 .iconButton.dark {
   color: #e6d5b8;
 }

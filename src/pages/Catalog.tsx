@@ -10,17 +10,17 @@ import FilterBar from "../components/FilterBar";
 import SearchBarWithOptions from "../components/SearchBarWithOptions";
 import { useGames } from "../hooks/useGames";
 import { useFilteredGames } from "../hooks/useFilteredGames";
+import useGamesPerPage from "../hooks/useGamesPerPage"; // Importar el nuevo hook
 
 const Catalog: React.FC = () => {
   const { theme } = useTheme();
   const { games, loading, error } = useGames();
+  const gamesPerPage = useGamesPerPage(); 
 
   const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [players, setPlayers] = useState<number>(1);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [currentPage, setCurrentPage] = useState<number>(1);
-
-  const gamesPerPage = 10;
 
   const categories = Array.from(
     new Set(games.flatMap((game) => game.categories))
@@ -81,7 +81,7 @@ const Catalog: React.FC = () => {
           currentPage={currentPage}
           paginate={paginate}
           theme={theme}
-          buttonClass={`${styles.customPageButton} ${styles[theme]}`} // Pass the custom button class
+          buttonClass={`${styles.customPageButton} ${styles[theme]}`}
         />
       </div>
     </div>

@@ -1,4 +1,5 @@
 /* src/components/FilterBar.module.css */
+
 .filterBarContainer {
   display: flex;
   flex-direction: column;
@@ -77,11 +78,11 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 input[type="range"].light::-webkit-slider-thumb {
-  background: #d4a017; /* Gold thumb */
+  background: #d4a017;
 }
 
 input[type="range"].dark::-webkit-slider-thumb {
-  background: #a68a64; /* Muted gold thumb */
+  background: #a68a64;
 }
 
 input[type="range"]::-moz-range-thumb {

@@ -1,0 +1,3 @@
+- Empty area between Footer and main Div  . min height?? 
+
+- Catalog.tsx changing size increases empry area (see above) 

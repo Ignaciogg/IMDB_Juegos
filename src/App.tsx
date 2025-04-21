@@ -1,28 +1,18 @@
 // src/App.tsx
-import React from 'react';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
-import styled, { createGlobalStyle, ThemeProvider as StyledThemeProvider } from 'styled-components';
-import { ThemeProvider, useTheme, Theme } from './context/ThemeContext';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Home from './pages/Home';
-import Catalog from './pages/Catalog';
-import GamePage from './pages/GamePage'; // Import the GamePage component
+import React from "react";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import styled, { ThemeProvider as StyledThemeProvider } from "styled-components";
+import { ThemeProvider, useTheme, Theme } from "./context/ThemeContext";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Home from "./pages/Home";
+import Catalog from "./pages/Catalog";
+import GamePage from "./pages/GamePage";
+import "./styles/global.css"; // Import global.css
 
-// Definir el tema para styled-components
 type StyledTheme = {
   mode: Theme;
 };
-
-const GlobalStyle = createGlobalStyle<{ theme: StyledTheme }>`
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto', sans-serif;
-    background-color: ${props => props.theme.mode === 'light' ? '#ffffff' : '#121212'};
-    color: ${props => props.theme.mode === 'light' ? '#212529' : '#f8f9fa'};
-  }
-`;
 
 const AppContainer = styled.div`
   min-height: 100vh;
@@ -30,34 +20,43 @@ const AppContainer = styled.div`
   flex-direction: column;
 `;
 
+const ContentContainer = styled.div`
+  padding-left: 80px;
+  padding-right: 80px;
+  flex-grow: 1;
+`;
+
 const Content = styled.main`
   flex-grow: 1;
 `;
 
-// Componente intermedio para usar el hook useTheme
 const AppContent: React.FC = () => {
   const { theme } = useTheme();
   const styledTheme = { mode: theme };
+
   
+  React.useEffect(() => {
+    document.body.className = theme; // Set body class to 'light' or 'dark'
+  }, [theme]);
+
   return (
     <StyledThemeProvider theme={styledTheme}>
-      <>
-        <GlobalStyle theme={styledTheme} />
-        <Router>
-          <AppContainer>
-            <Header />
+      <Router>
+        <AppContainer>
+          <Header />
+          <ContentContainer>
             <Content>
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/catalog" element={<Catalog />} />
-                <Route path="/game/:id" element={<GamePage />} /> 
+                <Route path="/game/:id" element={<GamePage />} />
                 <Route path="/rankings" element={<div>Página de Rankings (Por implementar)</div>} />
               </Routes>
             </Content>
-            <Footer />
-          </AppContainer>
-        </Router>
-      </>
+          </ContentContainer>
+          <Footer />
+        </AppContainer>
+      </Router>
     </StyledThemeProvider>
   );
 };
