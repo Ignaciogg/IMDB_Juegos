@@ -9,6 +9,9 @@ import Home from "./pages/Home";
 import Catalog from "./pages/Catalog";
 import GamePage from "./pages/GamePage";
 import "./styles/global.css"; // Import global.css
+import LogIn from "./pages/LogIn";
+import AccountPage  from "./pages/AccountPage";
+import PrivateRoute from './routes/PrivateRoute';
 
 type StyledTheme = {
   mode: Theme;
@@ -51,6 +54,14 @@ const AppContent: React.FC = () => {
                 <Route path="/catalog" element={<Catalog />} />
                 <Route path="/game/:id" element={<GamePage />} />
                 <Route path="/rankings" element={<div>Página de Rankings (Por implementar)</div>} />
+                <Route path="/log" element={<LogIn />} />
+               
+                <Route path="/account" element={
+                                                <PrivateRoute>
+                                                  <AccountPage />
+                                                </PrivateRoute>
+                                              }
+                                              />
               </Routes>
             </Content>
           </ContentContainer>
