@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { getDownloadURL, ref } from "firebase/storage";
-import { storage } from "../firebase"; // Importa Firebase Storage
+import React, { useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { Game } from "../types";
 import { useTheme } from "../context/ThemeContext";
+import { useNavigate } from "react-router-dom";
 import styles from "../assets/css/GameCard.module.css";
+import notFoundImage from "../assets/images/not-found.jpg";
 
 interface GameCardProps {
   game: Game;
@@ -12,32 +12,30 @@ interface GameCardProps {
 
 const GameCard: React.FC<GameCardProps> = ({ game }) => {
   const { theme } = useTheme();
-  const [imageUrl, setImageUrl] = useState("");
+  const navigate = useNavigate();
+  const [imageError, setImageError] = useState<boolean>(false); 
 
-  useEffect(() => {
-    const fetchImage = async () => {
-      if (!game.image) return; 
+  // Handle click to navigate to the game details page
+  const handleClick = () => {
+    navigate(`/game/${game.id}`);
+  };
 
-      try {
-        const imageRef = ref(storage, `games/${game.image}`); //puede fallar depende de los permisos de firebase.
-        const url = await getDownloadURL(imageRef); 
-        setImageUrl(url);
-      } catch (error) {
-        console.error("Error fetching image:", error);
-      }
-    };
-
-    fetchImage();
-  }, [game.image]);
+ 
+  const fallbackImage = notFoundImage; 
 
   return (
-    <div className={`${styles.card} ${styles[theme]}`}>
-      <img className={styles.gameImage} src={imageUrl} alt={game.name} />
+    <div className={`${styles.card} ${styles[theme]}`} onClick={handleClick}>
+      <img
+        className={styles.gameImage}
+        src={imageError || !game.image ? fallbackImage : game.image}
+        alt={game.name}
+        onError={() => setImageError(true)} 
+      />
       <div className={styles.gameContent}>
         <h3 className={styles.gameTitle}>{game.name}</h3>
         <div className={styles.ratingContainer}>
           <FaStar color="#ffc107" />
-          <span className={styles.rating}>{game.rating.toFixed(1)}</span>
+          <span className={styles.rating}>{game.average_rating.toFixed(1)}</span>
           <span className={styles.totalRatings}>({game.totalRatings})</span>
         </div>
         <div className={styles.categories}>

@@ -1,0 +1,118 @@
+/* src/components/FilterBar.module.css */
+
+.filterBarContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 15px;
+  border-radius: 8px;
+  
+ 
+}
+
+.filterBarContainer.light {
+  background: url(../images/dark-wood.png) repeat;
+  background-color: #f5d5a5;
+  border: 2px solid #8b5a2b;
+}
+
+.filterBarContainer.dark {
+  background: url(../images/dark-wood.png) repeat;
+  background-color: #3a2a1b; 
+  border: 2px solid #5c4033; 
+}
+
+
+.filterLabel {
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.filterLabel.light {
+  color: #4a2c0b; 
+}
+
+.filterLabel.dark {
+  color: #e6d5b8; 
+}
+
+.rangeContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+input[type="range"] {
+  
+  
+  
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  outline: none;
+  
+}
+
+input[type="range"].light {
+  background-color: burlywood;
+  background: linear-gradient(to right, #8b5a2b, #d4a017); 
+}
+
+input[type="range"].dark {
+  background-color: rgb(167, 138, 100);
+  background: linear-gradient(to right, #5c4033, #a68a64); 
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  background-color: burlywood;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+input[type="range"].light::-webkit-slider-thumb {
+  background: #d4a017;
+}
+
+input[type="range"].dark::-webkit-slider-thumb {
+  background: #a68a64;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+input[type="range"].light::-moz-range-thumb {
+  background: #d4a017;
+}
+
+input[type="range"].dark::-moz-range-thumb {
+  background: #a68a64;
+}
+
+.rangeValue {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.rangeValue.light {
+  color: #4a2c0b;
+}
+
+.rangeValue.dark {
+  color: #e6d5b8;
+}

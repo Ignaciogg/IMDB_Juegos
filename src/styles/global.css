@@ -1,0 +1,21 @@
+/* src/styles/global.css */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    
+  }
+  
+  /* Light Theme */
+  body.light {
+    background: url(../assets/images/dark-wood.png) repeat;
+    background-color: #f5d5a5; /* Light wood base color */
+    color: #4a2c0b; /* Dark brown text for contrast */
+  }
+  
+  /* Dark Theme */
+  body.dark {
+    background: url(../assets/images/dark-wood.png) repeat;
+    background-color: #3a2a1b; /* Dark wood base color */
+    color: #e6d5b8; /* Light cream text for contrast */
+  }

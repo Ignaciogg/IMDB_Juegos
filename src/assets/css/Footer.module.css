@@ -1,16 +1,18 @@
+/* Footer.module.css */
 .footer {
-    padding: 1.5rem;
-    text-align: center;
-    margin-top: auto;
-  }
-  
-  .footer.light {
-    background-color: #f8f9fa;
-    color: #212529;
-  }
-  
-  .footer.dark {
-    background-color: #343a40;
-    color: #f8f9fa;
-  }
-  
+  padding: 1.5rem;
+  text-align: center;
+  margin-top: auto;
+}
+
+.footer.light {
+  background: url(../images/dark-wood.png) repeat;
+  background-color: #f58f00b9;
+  color: #4a2c0b;
+}
+
+.footer.dark {
+  background: url(../images/dark-wood.png) repeat;
+  background-color: #2a1d12;
+  color: #e6d5b8;
+}
