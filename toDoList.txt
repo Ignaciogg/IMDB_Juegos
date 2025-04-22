@@ -1,0 +1,21 @@
+- Empty area between Footer and main Div  . min height?? 
+
+- Catalog.tsx changing size increases empry area (see above) 
+
+----------------------
+
+- log in styles and messages
+
+-----------------------
+
+-Tailwind css?
+
+-------------------------
+
+Cloud instructions to update name on review when username changes. 
+
+--------------
+
+Create review, Create account with extra info (username)
+
+Show only 3 reviews (Scroll for more / small pagination) ---- on click review page with full review. potentially go to user profile to check all reviews.

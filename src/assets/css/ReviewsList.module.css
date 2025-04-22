@@ -1,0 +1,108 @@
+/* src/components/ReviewsList.module.css */
+
+/* Container holding all reviews */
+.reviewsContainer {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  background: url("../assets/images/dark-wood.png") repeat;
+}
+
+/* Light theme background overlay */
+.reviewsContainer.light {
+  background-color: rgba(245, 213, 165, 0.9); /* light wood tone */
+}
+
+/* Dark theme background overlay */
+.reviewsContainer.dark {
+  background-color: rgba(58, 42, 27, 0.9); /* dark wood tone */
+}
+
+/* Individual review card */
+.reviewItem {
+  display: block;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+/* Light theme for review card */
+.reviewItem.light {
+  background-color: rgba(255, 248, 240, 0.9);
+  color: #4a2c0b;
+}
+
+/* Dark theme for review card */
+.reviewItem.dark {
+  background-color: rgba(46, 36, 27, 0.9);
+  color: #e6d5b8;
+}
+
+/* Hover effect for review cards */
+.reviewItem.light:hover {
+  background-color: rgba(240, 226, 194, 0.95);
+}
+
+.reviewItem.dark:hover {
+  background-color: rgba(58, 50, 43, 0.95);
+}
+
+/* Username label */
+.username {
+  font-weight: bold;
+  margin-bottom: 8px;
+  display: block;
+  font-size: 1rem;
+}
+
+/* Review text */
+.reviewText {
+  display: block;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  margin: 10px 0;
+  overflow: hidden; /* Hide overflow */
+  text-overflow: ellipsis; /* Add ellipsis for overflow */
+  white-space: nowrap; /* Prevent text from wrapping to a new line */
+}
+
+/* Rating badge */
+.rating {
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light theme rating */
+.rating.light {
+  background-color: #d4a017; /* golden wood highlight */
+  color: #fff;
+}
+
+/* Dark theme rating */
+.rating.dark {
+  background-color: #a68a64; /* muted wood highlight */
+  color: #fff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .reviewsContainer {
+    padding: 15px;
+  }
+  .reviewItem {
+    padding: 12px;
+  }
+  .reviewText {
+    font-size: 1rem;
+  }
+}
